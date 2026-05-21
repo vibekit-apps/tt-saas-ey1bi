@@ -1,0 +1,52 @@
+# SaaS Starter
+
+A real working SaaS scaffold: email/password auth, signed sessions, a Stripe-ready billing endpoint, and a dashboard shell. JSON-file persistence — no database addon needed.
+
+## What's inside
+
+```
+saas/
+  server.js                  # express app + session + route mounts
+  middleware/auth.js         # requireAuth — guards /api routes
+  lib/users.js               # JSON file user store at lib/data/users.json + bcryptjs hashing
+  lib/billing.js             # Stripe wrapper (lazy-loads when STRIPE_SECRET_KEY is set)
+  routes/auth.js             # POST /api/signup, /api/login, /api/logout, GET /api/me
+  routes/billing.js          # POST /api/checkout (auth required), GET /api/plans
+  public/index.html          # marketing landing page
+  public/signup.html         # signup form
+  public/login.html          # login form
+  public/pricing.html        # plans grid with upgrade buttons
+  public/dashboard.html      # auth-gated dashboard
+  public/app.js              # shared frontend (fetch wrappers, form bindings)
+  public/styles.css          # design system
+```
+
+## Start it locally
+
+```bash
+npm install
+npm start
+```
+
+Open http://localhost:3000.
+
+## Enabling Stripe
+
+The checkout endpoint is wired up but lazy. Without env vars it returns a configuration hint. To enable real Stripe checkout, set these env vars (in VibeKit, use `/env`):
+
+- `STRIPE_SECRET_KEY` — your Stripe secret key
+- `STRIPE_PRICE_PRO` — Stripe Price ID for the Pro plan
+- `STRIPE_PRICE_TEAM` — Stripe Price ID for the Team plan
+- `SESSION_SECRET` — random string used to sign session cookies (highly recommended in production)
+
+## Persistence
+
+Users live in `lib/data/users.json` on the container's EFS-backed workspace, so they survive restarts. Sessions are in-memory (express-session default) — they reset on container restart. That's intentional for a starter; if you need persistent sessions, ask the agent to swap to a session store.
+
+## Ask the agent
+
+Tell the agent what to change. Examples:
+
+- "Add OAuth via GitHub to the signup page."
+- "Replace the JSON user store with the VibeKit Postgres addon."
+- "Add a settings page where users can change their password."

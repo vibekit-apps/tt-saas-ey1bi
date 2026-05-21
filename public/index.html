@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SaaS Starter</title>
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body class="landing">
+<header class="nav">
+  <a class="brand" href="/">SaaS Starter</a>
+  <nav>
+    <a href="/pricing.html">Pricing</a>
+    <a href="/login.html">Log in</a>
+    <a class="btn primary" href="/signup.html">Sign up</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <h1>Ship your SaaS this week.</h1>
+    <p class="lede">A working auth + billing + dashboard scaffold. Edit the parts you don't like. Keep the rest.</p>
+    <div class="cta-row">
+      <a class="btn primary lg" href="/signup.html">Start free</a>
+      <a class="btn ghost lg" href="/pricing.html">See pricing</a>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="feature">
+      <div class="icon">🔐</div>
+      <h3>Real auth</h3>
+      <p>Email + password signup with bcrypt hashing and signed sessions. No localStorage shortcuts.</p>
+    </div>
+    <div class="feature">
+      <div class="icon">💳</div>
+      <h3>Stripe-ready</h3>
+      <p>Drop in <code>STRIPE_SECRET_KEY</code> and a Price ID — the checkout endpoint is already wired.</p>
+    </div>
+    <div class="feature">
+      <div class="icon">📊</div>
+      <h3>Dashboard shell</h3>
+      <p>Auth-gated dashboard with user info, plan, and upgrade CTA. Customize the rest.</p>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2>Built to be customized.</h2>
+    <p>Ask the agent to swap auth for OAuth, the JSON store for Postgres, or the design for whatever you'd ship.</p>
+    <a class="btn primary lg" href="/signup.html">Create an account</a>
+  </section>
+</main>
+
+<footer>
+  <span>SaaS Starter — your scaffold to fork.</span>
+</footer>
+</body>
+</html>
